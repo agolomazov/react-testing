@@ -26,7 +26,7 @@ describe('<CommentBox />', () => {
 		wrapper.unmount();
 	});
 
-	it('has a text area and a button', () => {
+	it('has a text area and two button', () => {
 		expect(wrapper.find('textarea')).to.have.length(1);
 		expect(wrapper.find('button')).to.have.length(2);
 	});
