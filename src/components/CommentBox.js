@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
+import withAuth from './withAuth';
 import { saveComment, fetchComments } from '../actions';
 
 class CommentBox extends Component {
@@ -46,7 +48,12 @@ const mapDispatchToProps = {
 	onFetchComments: fetchComments,
 };
 
-export default connect(
-	null,
-	mapDispatchToProps
-)(CommentBox);
+const enhancer = compose(
+	withAuth,
+	connect(
+		null,
+		mapDispatchToProps
+	)
+);
+
+export default enhancer(CommentBox);
