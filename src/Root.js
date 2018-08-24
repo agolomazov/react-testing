@@ -2,10 +2,11 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import promiseMiddleware from 'redux-promise';
 import rootReducer from './reducers';
+import asyncMiddleware from './middlewares/async';
+import stateValidator from './middlewares/stateValidator';
 
-const listMiddlewares = [promiseMiddleware];
+const listMiddlewares = [asyncMiddleware, stateValidator];
 const middlewares = applyMiddleware(...listMiddlewares);
 let storeMiddleware = null;
 
